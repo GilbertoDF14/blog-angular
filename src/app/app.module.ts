@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Route} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +11,12 @@ import { InicioComponent } from './inicio/inicio.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MenuComponent } from './menu/menu.component';
+
+const rutas: Route[] = [
+  {path:'', component: LoginComponent},
+  {path:'login', component: LoginComponent},
+  {path:'inicio', component: InicioComponent}
+]
 
 @NgModule({
   declarations: [
@@ -20,7 +29,11 @@ import { MenuComponent } from './menu/menu.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    RouterModule.forRoot(rutas),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
